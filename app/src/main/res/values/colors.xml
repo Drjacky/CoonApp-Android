@@ -5,4 +5,8 @@
     <color name="colorAccent">#FFA000</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+
+    <!-- Photos Fragment -->
+    <color name="item_list_photo_card_row_title">#4c4c4c</color>
+    <color name="item_list_photo_recycler_backgroundColor">#f1f5f8</color>
 </resources>

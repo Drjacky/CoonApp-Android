@@ -3,7 +3,6 @@ package com.jodelapp.features.photos.presentation;
 import com.jodelapp.AppComponent;
 import com.jodelapp.di.scope.ViewScope;
 import com.jodelapp.features.photos.usecases.UserPhotoListUseCaseModule;
-
 import dagger.Component;
 
 @ViewScope

@@ -2,8 +2,6 @@ package com.jodelapp.data.models;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
-import com.jodelapp.data.models.Address;
-import com.jodelapp.data.models.Company;
 
 @Generated("com.robohorse.robopojogenerator")
 public class Company{

@@ -1,7 +1,6 @@
 package com.jodelapp.data.models;
 
 import com.google.gson.annotations.SerializedName;
-
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")

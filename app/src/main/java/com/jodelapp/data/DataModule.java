@@ -1,12 +1,9 @@
 package com.jodelapp.data;
 
-
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.jodelapp.Consts;
 import com.jodelapp.data.api.ApiService;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;

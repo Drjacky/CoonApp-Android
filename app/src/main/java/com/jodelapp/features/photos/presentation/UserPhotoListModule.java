@@ -1,6 +1,5 @@
 package com.jodelapp.features.photos.presentation;
 
-
 import dagger.Module;
 import dagger.Provides;
 
