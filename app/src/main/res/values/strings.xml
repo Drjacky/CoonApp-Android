@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Challenge Accepted</string>
+
+    <!-- splash screen-->
+    <string name="splash_title">Challenge Accepted</string>
+
+</resources>
