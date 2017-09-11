@@ -25,7 +25,7 @@ public final class MainActivityPresenter implements MainActivityContract.Present
 
     @Override
     public void onCreate() {
-        view.loadToDoPage();
+        //view.loadToDoPage();//Replaced by 'btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks);' in 'MainActivity'
     }
 
     @Override

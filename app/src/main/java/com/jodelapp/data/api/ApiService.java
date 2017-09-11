@@ -1,6 +1,7 @@
 package com.jodelapp.data.api;
 
 import com.jodelapp.data.models.ToDo;
+import com.jodelapp.data.models.User;
 
 import java.util.List;
 
@@ -13,5 +14,8 @@ public interface ApiService {
 
     @GET("/todos")
     Observable<List<ToDo>> getToDos(@Query("userId") String userId);
+
+    @GET("users")
+    Observable<List<User>> getUsers();
 
 }

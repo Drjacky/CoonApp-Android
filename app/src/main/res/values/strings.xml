@@ -4,4 +4,12 @@
     <!-- splash screen-->
     <string name="splash_title">Challenge Accepted</string>
 
+    <!-- main screen-->
+    <string name="main_bottom_navigation_profile">User Profile</string>
+    <string name="main_bottom_navigation_photos">Photos</string>
+    <string name="main_bottom_navigation_tasks">Task</string>
+
+    <!-- profile fragment -->
+    <string name="fragment_profile_selected_user">Default selected User</string>
+
 </resources>
