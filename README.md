@@ -15,7 +15,7 @@ Compile the app and open it, you will see a list of todos fetched from [User's t
 
 1. Add a bottom navigation in the app so users are able to switch between different views (user profile/photos /tasks)
 2. Implement a photo list and add it to bottom navigation, for showing current user's photos in a List-structured View.
-Hint: using both [Albumns](https://jsonplaceholder.typicode.com/albums?userId=1) and [Photos](https://jsonplaceholder.typicode.com/photos?albumId=1) to paginate the long list of photos by album
+Hint: using both [Albums](https://jsonplaceholder.typicode.com/albums?userId=1) and [Photos](https://jsonplaceholder.typicode.com/photos?albumId=1) to paginate the long list of photos by album
 3. Implement a user profile view with the current _login_ user [User's profile](https://jsonplaceholder.typicode.com/users) and meanwhile listing all 10 users below. So whenever a user's selected, the user profile should be updated and all photos and tasks should be updated accordingly as well.
 
 [Bonus]
