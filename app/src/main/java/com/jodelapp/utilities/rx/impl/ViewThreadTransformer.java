@@ -1,15 +1,11 @@
 package com.jodelapp.utilities.rx.impl;
 
-
 import com.jodelapp.utilities.rx.ThreadTransformer;
 import com.jodelapp.utilities.rx.qualifiers.IOThreadPref;
 import com.jodelapp.utilities.rx.qualifiers.UIThreadPref;
-
 import javax.inject.Inject;
-
 import io.reactivex.Scheduler;
 import io.reactivex.SingleTransformer;
-
 
 public final class ViewThreadTransformer implements ThreadTransformer {
 

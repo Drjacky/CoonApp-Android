@@ -22,8 +22,8 @@ public class UserPhotoListAdapter extends RecyclerView.Adapter<UserPhotoListAdap
 
         public MyViewHolder(View view) {
             super(view);
-            mId = (TextView) view.findViewById(R.id.item_list_photo_txtPhotoId);
-            mThumbnail = (ImageView) view.findViewById(R.id.item_list_photo_imgPhotoThumbnail);
+            mId = view.findViewById(R.id.item_list_photo_txtPhotoId);
+            mThumbnail = view.findViewById(R.id.item_list_photo_imgPhotoThumbnail);
         }
     }
 
@@ -46,12 +46,12 @@ public class UserPhotoListAdapter extends RecyclerView.Adapter<UserPhotoListAdap
         holder.mId.setText(photo.getId());
 
         Picasso.with(mContext)
-                .load(photo.getThumbnailUrl()) //Thumbnail URL
+                .load(photo.getThumbnailUrl()) // Thumbnail URL
                 .into(holder.mThumbnail);
     }
 
     @Override
     public int getItemCount() {
-        return photosList == null ? 0 : photosList.size();
+        return photosList == null ? 0 : photosList.size(); // For the first time (viewInit() in UserPhotoListView class), before we get albumId from server, photosList is null.
     }
 }

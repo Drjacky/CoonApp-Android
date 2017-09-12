@@ -1,16 +1,11 @@
 package com.jodelapp;
 
-
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.Locale;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

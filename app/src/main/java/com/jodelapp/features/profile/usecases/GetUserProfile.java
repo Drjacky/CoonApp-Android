@@ -1,18 +1,15 @@
 package com.jodelapp.features.profile.usecases;
 
-
 import com.jodelapp.data.api.ApiService;
 import com.jodelapp.features.profile.models.UserProfilePresentationModel;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import io.reactivex.Single;
 
 public interface GetUserProfile {
 
     Single<List<UserProfilePresentationModel>> call();
+
 }
 
 final class GetUserProfileImpl implements GetUserProfile {
@@ -26,7 +23,7 @@ final class GetUserProfileImpl implements GetUserProfile {
 
 
     @Override
-    public Single<List<UserProfilePresentationModel>> call() {
+    public Single<List<UserProfilePresentationModel>> call() { // Get list of users from server.
         return apiService.getUsers()
                 .flatMapIterable(users -> users)
                 .map(user -> new UserProfilePresentationModel(String.valueOf(user.getId()), user.getName(), user.getUsername(), user.getEmail(), user.getAddress(), user.getPhone(), user.getWebsite(), user.getCompany()))

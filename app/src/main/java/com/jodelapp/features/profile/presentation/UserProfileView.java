@@ -10,22 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
 import com.jodelapp.features.profile.models.UserProfilePresentationModel;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-
-public class UserProfileView extends Fragment implements UserProfileContract.View{ //I would have preferred this name 'ProfileFragment'; and put all these fragments in the 'views.fragments' package, not in the 'features' package.
+public class UserProfileView extends Fragment implements UserProfileContract.View{ // I would have preferred this name 'ProfileFragment'; and put all these fragments in the 'views.fragments' package, not in the 'features' package.
 
     @Inject
     UserProfileContract.Presenter presenter;
@@ -47,7 +42,6 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
 
     private UserProfileComponent scopeGraph;
     private Unbinder unbinder;
-
     private String mSelectedUserId;
 
     public static UserProfileView getInstance() {
@@ -68,7 +62,7 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        presenter.onAttached();
+        presenter.onAttached(); // Get list of users from server.
     }
 
     @Override
@@ -82,7 +76,7 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
     public void loadUserList(List<UserProfilePresentationModel> users) {
         UserProfileAdapter adapter = new UserProfileAdapter(users);
         rcyUsers.setAdapter(adapter);
-        adapter.getPositionClicks().subscribe(this::loadSelectedUser);
+        adapter.getPositionClicks().subscribe(this::loadSelectedUser); // Set SOME of selected user information. (Id, Name and Username)
         adapter.notifyDataSetChanged();
     }
 
@@ -106,7 +100,7 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
         scopeGraph.inject(this);
     }
 
-    public String getSelectedUserId(){
+    public String getSelectedUserId(){ // Keep latest selected user id, for get related albums from server.
         return mSelectedUserId;
     }
 }

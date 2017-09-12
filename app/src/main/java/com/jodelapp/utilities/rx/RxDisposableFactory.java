@@ -1,8 +1,6 @@
 package com.jodelapp.utilities.rx;
 
-
 import com.jodelapp.utilities.rx.impl.CompositeDisposablesImpl;
-
 import javax.inject.Inject;
 
 public class RxDisposableFactory {

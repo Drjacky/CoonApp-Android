@@ -1,6 +1,5 @@
 package com.jodelapp;
 
-
 import android.app.Application;
 import android.content.Context;
 
@@ -22,8 +21,6 @@ public class App extends Application {
     public static App get(Context context) {
         return (App) context.getApplicationContext();
     }
-
-
 
     private void initComponents() {
         appComponent = DaggerAppComponent.builder()

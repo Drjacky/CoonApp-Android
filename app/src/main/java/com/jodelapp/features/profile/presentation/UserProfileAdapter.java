@@ -5,18 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.jodelapp.R;
 import com.jodelapp.features.profile.models.UserProfilePresentationModel;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
-
 
 public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final PublishSubject<UserProfilePresentationModel> onClickSubject = PublishSubject.create();
@@ -55,8 +51,10 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     class UserItemViewHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.user_txtName)
         TextView txtName;
+
         @BindView(R.id.user_txtId)
         TextView txtId;
 
@@ -70,7 +68,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             txtId.setText(userProfilePresentationModel.getId());
 
             itemView.setOnClickListener(v -> {
-                onClickSubject.onNext(userProfilePresentationModel); //Send selected user Model to the UserProfileView fragment.
+                onClickSubject.onNext(userProfilePresentationModel); // Send selected user model to the UserProfileView fragment.
             });
         }
     }

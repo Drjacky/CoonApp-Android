@@ -1,6 +1,5 @@
 package com.jodelapp.utilities.rx;
 
-
 import io.reactivex.SingleTransformer;
 
 public interface ThreadTransformer {

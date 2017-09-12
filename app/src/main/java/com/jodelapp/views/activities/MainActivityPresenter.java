@@ -1,12 +1,8 @@
 package com.jodelapp.views.activities;
 
-import com.jodelapp.utilities.StringUtils;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
-
-import org.greenrobot.eventbus.EventBus;
-
 import javax.inject.Inject;
 
 public final class MainActivityPresenter implements MainActivityContract.Presenter {
@@ -22,7 +18,6 @@ public final class MainActivityPresenter implements MainActivityContract.Present
         this.disposables = rxDisposableFactory.get();
     }
 
-
     @Override
     public void onCreate() {
         //view.loadToDoPage();//Replaced by 'btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks);' in 'MainActivity'
@@ -32,6 +27,4 @@ public final class MainActivityPresenter implements MainActivityContract.Present
     public void onDestroy() {
         disposables.clear();
     }
-
-
 }

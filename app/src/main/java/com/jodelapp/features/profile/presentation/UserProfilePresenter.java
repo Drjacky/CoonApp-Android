@@ -1,12 +1,10 @@
 package com.jodelapp.features.profile.presentation;
 
 import android.util.Log;
-
 import com.jodelapp.features.profile.usecases.GetUserProfile;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
-
 import javax.inject.Inject;
 
 public final class UserProfilePresenter implements UserProfileContract.Presenter {
@@ -27,22 +25,18 @@ public final class UserProfilePresenter implements UserProfileContract.Presenter
         this.disposables = factory.get();
     }
 
-
     @Override
-    public void onAttached() {
+    public void onAttached() { // Get list of users on UserProfileView fragment created.
         disposables.add(getUserProfile.call()
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        users -> view.loadUserList(users),
+                        view::loadUserList,
                         error -> Log.e("UserProfile", error.getMessage())
                 ));
-
     }
 
     @Override
     public void onDetached() {
         disposables.clear();
     }
-
-
 }

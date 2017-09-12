@@ -9,29 +9,26 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
 import com.jodelapp.features.photos.models.UserPhotoAlbumPresentationModel;
 import com.jodelapp.features.photos.models.UserPhotoPresentationModel;
 import com.jodelapp.features.profile.presentation.UserProfileView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class UserPhotoListView extends Fragment implements UserPhotoListContract.View {
+
+    private static final String USER_ID = "1";
 
     @Inject
     UserPhotoListContract.Presenter presenter;
@@ -46,17 +43,15 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     RecyclerView mRecyclerViewPhotos;
 
     private UserPhotoListAdapter mUserPhotoListRecyclerAdapter;
-    private List<UserPhotoPresentationModel> photosList = new ArrayList<UserPhotoPresentationModel>();
+    private List<UserPhotoPresentationModel> photosList = new ArrayList<>();
     private List<UserPhotoAlbumPresentationModel> mAlbumList;
     private GridLayoutManager layoutManager;
-
     private UserPhotoListComponent scopeGraph;
     private Unbinder unbinder;
-
     private int firstVisibleItemPosition, visibleItemCount, totalItemCount;
     private boolean isLastPage = false;
     private boolean isLoading = false;
-    private int nextPage = 0;
+    private int nextPage = 0; // Containing the value of increased album id, on each page.
 
     public static UserPhotoListView getInstance() {
         return new UserPhotoListView();
@@ -72,12 +67,12 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     }
 
     private void viewInit() {
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mContext, 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(mContext, 2); // Split photo grid to two columns.
         mRecyclerViewPhotos.setLayoutManager(mLayoutManager);
         layoutManager = ((GridLayoutManager) mRecyclerViewPhotos.getLayoutManager());
         mRecyclerViewPhotos.addItemDecoration(new GridRecyclerSpacingItemDecoration(2, ConvertDpToPx(10), true));
         mRecyclerViewPhotos.setItemAnimator(new DefaultItemAnimator());
-        mUserPhotoListRecyclerAdapter = new UserPhotoListAdapter(mContext, photosList);
+        mUserPhotoListRecyclerAdapter = new UserPhotoListAdapter(mContext, photosList); // For the first time, before we get the albumId, photoList is null.
         mRecyclerViewPhotos.setAdapter(mUserPhotoListRecyclerAdapter);
         mRecyclerViewPhotos.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -100,8 +95,6 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //presenter.onAttached("1");
-
     }
 
     @Override
@@ -110,9 +103,8 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
         UserProfileView userProfileViewFragment = (UserProfileView) getActivity()
                 .getSupportFragmentManager()
                 .findFragmentByTag("fragment_profile");
-        Log.wtf("userProfileViewFragment.getSelectedUserId()",userProfileViewFragment == null ? "1666666" : userProfileViewFragment.getSelectedUserId());
 
-        presenter.getAlbumList(userProfileViewFragment == null ? "1" : userProfileViewFragment.getSelectedUserId());
+        presenter.getAlbumList(userProfileViewFragment == null ? USER_ID : userProfileViewFragment.getSelectedUserId()); // Default userId, if user didn't click on the UserProfileView fragment.
     }
 
     @Override
@@ -124,38 +116,22 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
 
     @Override
     public void loadPhotoList(List<UserPhotoPresentationModel> providers, List<UserPhotoAlbumPresentationModel> albums) {
-        mAlbumList = albums;
+        mAlbumList = albums; // Keep list of albums for next usages in pagination.
         isLoading = false;
-        //photosList = providers;
-        /*new Handler().postDelayed(new Runnable() {
 
-                                      @Override
-                                      public void run() {*/
         photosList.addAll(providers);
-
-
         mUserPhotoListRecyclerAdapter.notifyDataSetChanged();
-        //}
-        //}, 1000);
-
-
-        //mUserPhotoListRecyclerAdapter.notifyDataSetChanged();
-
     }
 
-    private void loadMoreItems() {
+    private void loadMoreItems() { // Get the next photos pack for next page.
         isLoading = true;
         nextPage = nextPage + 1;
 
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                if(nextPage < mAlbumList.size())
-                    presenter.getNextPhotos(mAlbumList.get(nextPage).getId());
-                else
-                    isLastPage = true;
-            }
+        new Handler().postDelayed(() -> {
+            if(nextPage < mAlbumList.size())
+                presenter.getNextPhotos(mAlbumList.get(nextPage).getId());
+            else
+                isLastPage = true;
         }, 1000);
 
     }

@@ -7,19 +7,16 @@ import java.util.List;
 public interface UserPhotoListContract {
 
     interface View {
-
-        void loadPhotoList(List<UserPhotoPresentationModel> providers, List<UserPhotoAlbumPresentationModel> albums);
-
+        void loadPhotoList(List<UserPhotoPresentationModel> providers, List<UserPhotoAlbumPresentationModel> albums); // Set list of photos to adapter.
     }
 
     interface Presenter {
-
-        void onAttached(String userId);
+        void onAttached(String userId); // Replaced by getAlbumList in OnResume class, in UserPhotoListView.
 
         void onDetached();
 
-        void getAlbumList(String userId);
+        void getAlbumList(String userId); // Get list of albums by userId.
 
-        void getNextPhotos(String albumId);
+        void getNextPhotos(String albumId); // Get list of photos by albumId.
     }
 }

@@ -5,16 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.jodelapp.R;
 import com.jodelapp.features.todos.models.TodoPresentationModel;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 public class UserTodoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -37,16 +33,15 @@ public class UserTodoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ((ToDoItemViewHolder) holder).render(todoPresentationModel);
     }
 
-
     @Override
     public int getItemCount() {
         return todoDataList.size();
     }
 
-
     class ToDoItemViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_item_todo)
         TextView tvItemToDo;
+
         @BindView(R.id.tv_item_status)
         TextView tvItemStatus;
 

@@ -6,17 +6,13 @@ import com.jodelapp.features.photos.usecases.GetUserPhoto;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import io.reactivex.functions.Consumer;
 
 public final class UserPhotoListPresenter implements UserPhotoListContract.Presenter {
 
-    private static final String USER_ID = "1";
-
+    private static final String USER_ID = "1"; // Default userId, if user didn't click on the UserProfileView fragment.
     private final UserPhotoListContract.View view;
     private final GetUserPhoto getUserPhoto;
     private final ThreadTransformer threadTransformer;
@@ -35,14 +31,9 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
         this.disposables = factory.get();
     }
 
-
     @Override
     public void onAttached(String userId) {
-
-
         getAlbumList(userId == null ? USER_ID : userId);
-        //getNextPhotos("1");
-
     }
 
     @Override
@@ -55,88 +46,21 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
         disposables.add(
                 getUserPhoto.getAlbums(userId)
                         .compose(threadTransformer.applySchedulers())
-                        .subscribe(new Consumer<List<UserPhotoAlbumPresentationModel>>() {
-                            @Override
-                            public void accept(List<UserPhotoAlbumPresentationModel> userPhotoAlbumPresentationModels) throws Exception {
-                                mAlbums = userPhotoAlbumPresentationModels;
-                                getNextPhotos(mAlbums.get(0).getId());
-                            }
+                        .subscribe(userPhotoAlbumPresentationModels -> {
+                            mAlbums = userPhotoAlbumPresentationModels;
+                            getNextPhotos(mAlbums.get(0).getId());
                         }));
-
-                        /*.subscribe(
-                                album ->
-                                        getNextPhotos(mAlbums.get(0).getId()),
-                                error -> Log.e("UserPhotoAlbum", error.getMessage()
-                                )));*/
-
-
-
-
-        //return getUserPhoto.getAlbums(userId);
-                /*.compose(threadTransformer.applySchedulersOnObservable())
-                .subscribe(
-                        new Consumer<List<UserPhotoAlbumPresentationModel>>() {
-                            @Override
-                            public void accept(List<UserPhotoAlbumPresentationModel> userPhotoAlbumPresentationModels) throws Exception {
-                                Log.v("userPhotoAlbumPresentationModels",userPhotoAlbumPresentationModels.size()+" !!!");
-                            }
-                        }
-                );
-    }*/
-        /*return Observable.defer(new Callable<ObservableSource<? extends List<UserPhotoAlbumPresentationModel>>>() {
-            @Override
-            public ObservableSource<? extends List<UserPhotoAlbumPresentationModel>> call() throws Exception {
-                return Observable.just(getUserPhoto.getAlbums(userId));
-            }
-        });*/
-
-        //return getUserPhoto.getAlbums(userId);
-        //return getUserPhoto.getAlbums(userId == null ? USER_ID : userId);
-        //return getUserPhoto.getAlbums(userId == null ? USER_ID : userId);
-
-
-
-        /*disposables.add(
-                getUserPhoto.callAlbum(userId)
-                        .compose(threadTransformer.applySchedulers())
-                        .subscribe(
-                                new Consumer<List<UserPhotoAlbumPresentationModel>>() {
-                                    @Override
-                                    public void accept(List<UserPhotoAlbumPresentationModel> userPhotoAlbumPresentationModels) throws Exception {
-                                        return
-                                    }
-                                }
-                        ));*/
     }
-
-    /*public void goNextAlbum(String userId) {
-        disposables.add(
-                getUserPhoto.getAlbums(userId)
-                        .compose(threadTransformer.applySchedulersOnObservable())
-                        .subscribe(
-                                album ->
-                                        getNextPhotos(album.get(0).getId()),
-                                error -> Log.e("UserPhotoAlbum", error.getMessage()
-                                )));
-    }*/
 
     @Override
     public void getNextPhotos(String albumId) {
         disposables.add(
                 getUserPhoto.getPhotos(albumId)
                         .compose(threadTransformer.applySchedulers())
-                        .subscribe(new Consumer<List<UserPhotoPresentationModel>>() {
-                            @Override
-                            public void accept(List<UserPhotoPresentationModel> userPhotoPresentationModels) throws Exception {
-                                mPhotos = userPhotoPresentationModels;
-                                view.loadPhotoList(mPhotos, mAlbums);
-                            }
+                        .subscribe(userPhotoPresentationModels -> {
+                            mPhotos = userPhotoPresentationModels;
+                            view.loadPhotoList(mPhotos, mAlbums); // Pass the mAlbums to the view, for pagination usage.
                         }));
-
-                        /*.subscribe(
-                                view::loadPhotoList,
-                                error -> Log.e("UserPhoto", error.getMessage()
-                                )));*/
     }
 
 }

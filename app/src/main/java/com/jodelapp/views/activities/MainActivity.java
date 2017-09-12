@@ -5,20 +5,15 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
 import com.jodelapp.features.photos.presentation.UserPhotoListView;
 import com.jodelapp.features.profile.presentation.UserProfileView;
 import com.jodelapp.features.todos.presentation.UserTodoListView;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
 
@@ -32,12 +27,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void loadToDoPage() {
-        btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks);//to set bottomnavigation item to todo
+        btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks); // To set bottomnavigation item to UserToDoListView fragment.
+
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.v_container, UserTodoListView.getInstance())
                 .commit();
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,17 +40,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         setContentView(R.layout.activity_main);
         setupScopeGraph(App.get(this).getAppComponent());
         initViews();
-        presenter.onCreate();
-        btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks);//Instead of 'view.loadToDoPage();' in 'MainActivityPresenter'.
+        presenter.onCreate(); // The usage of this line replaced by below line.
+        btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks); // Instead of view.loadToDoPage(); in MainActivityPresenter.
     }
-
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         presenter.onDestroy();
     }
-
 
     private void setupScopeGraph(AppComponent appComponent) {
         scopeGraph = DaggerMainActivityComponent.builder()
@@ -96,7 +89,5 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             getSupportFragmentManager().executePendingTransactions();
             return true;
         });
-        //
     }
-
 }

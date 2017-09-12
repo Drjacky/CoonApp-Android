@@ -1,6 +1,5 @@
 package com.jodelapp.utilities;
 
-
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
 import com.jodelapp.utilities.rx.impl.CompositeDisposablesImpl;
@@ -9,9 +8,7 @@ import com.jodelapp.utilities.rx.impl.WorkThreadTransformer;
 import com.jodelapp.utilities.rx.qualifiers.IOThreadPref;
 import com.jodelapp.utilities.rx.qualifiers.UIThreadPref;
 import com.jodelapp.utilities.rx.qualifiers.WorkThreadTransformerPref;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;

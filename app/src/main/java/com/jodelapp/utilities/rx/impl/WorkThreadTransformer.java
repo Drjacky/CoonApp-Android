@@ -1,14 +1,10 @@
 package com.jodelapp.utilities.rx.impl;
 
-
 import com.jodelapp.utilities.rx.ThreadTransformer;
 import com.jodelapp.utilities.rx.qualifiers.IOThreadPref;
-
 import javax.inject.Inject;
-
 import io.reactivex.Scheduler;
 import io.reactivex.SingleTransformer;
-
 
 public final class WorkThreadTransformer implements ThreadTransformer {
 

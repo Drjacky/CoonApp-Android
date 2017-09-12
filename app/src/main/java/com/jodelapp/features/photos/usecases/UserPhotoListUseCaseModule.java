@@ -1,6 +1,5 @@
 package com.jodelapp.features.photos.usecases;
 
-
 import dagger.Module;
 import dagger.Provides;
 
