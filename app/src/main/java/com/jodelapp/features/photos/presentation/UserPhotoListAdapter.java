@@ -52,6 +52,6 @@ public class UserPhotoListAdapter extends RecyclerView.Adapter<UserPhotoListAdap
 
     @Override
     public int getItemCount() {
-        return photosList == null ? 0 : photosList.size(); // For the first time (viewInit() in UserPhotoListView class), before we get albumId from server, photosList is null.
+        return photosList == null ? 0 : photosList.size(); // For the first time ( viewInit() in UserPhotoListView class ), before we get albumId from server, photosList is null.
     }
 }
