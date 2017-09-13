@@ -1,6 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,6 +6,7 @@
         android:id="@+id/fragment_profile_lnrSelectedUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/fragment_profile_lnrSelectedUser_bg"
         android:orientation="vertical">
 
         <TextView
@@ -15,12 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginEnd="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:padding="10dp"
+            android:layout_margin="@dimen/fragment_profile_txtSelectedUser_id_margin"
+            android:padding="@dimen/fragment_profile_txtSelectedUser_id_padding"
             android:text="@string/fragment_profile_selected_user" />
 
         <TextView
@@ -28,12 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginEnd="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:padding="10dp"
+            android:layout_margin="@dimen/fragment_profile_txtSelectedUser_name_margin"
+            android:padding="@dimen/fragment_profile_txtSelectedUser_name_padding"
             android:text="@string/fragment_profile_selected_user" />
 
         <TextView
@@ -41,26 +32,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_marginEnd="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:padding="10dp"
+            android:layout_margin="@dimen/fragment_profile_txtSelectedUser_username_margin"
+            android:padding="@dimen/fragment_profile_txtSelectedUser_username_padding"
             android:text="@string/fragment_profile_selected_user" />
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_profile_rcyUsers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/fragment_profile_lnrSelectedUser"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="8dp" />
+        android:layout_below="@id/fragment_profile_lnrSelectedUser" />
 
 </RelativeLayout>
 

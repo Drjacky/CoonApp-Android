@@ -39,10 +39,10 @@ public class UserTodoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     class ToDoItemViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_item_todo)
+        @BindView(R.id.item_list_todo_txtTodo)
         TextView tvItemToDo;
 
-        @BindView(R.id.tv_item_status)
+        @BindView(R.id.item_list_todo_txtStatus)
         TextView tvItemStatus;
 
         ToDoItemViewHolder(View view) {

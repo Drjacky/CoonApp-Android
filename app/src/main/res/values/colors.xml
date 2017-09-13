@@ -6,7 +6,22 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
+    <!-- MainActivity -->
+    <color name="bottom_navigation_main_activity_selector_state_checked">#ff0099cc</color>
+    <color name="bottom_navigation_main_activity_selector_default">#FFFFFF</color>
+
     <!-- Photos Fragment -->
-    <color name="item_list_photo_card_row_title">#4c4c4c</color>
-    <color name="item_list_photo_recycler_backgroundColor">#f1f5f8</color>
+    <color name="item_list_photo_txtPhotoId_color">#4c4c4c</color>
+
+    <!-- Profile Fragment -->
+    <color name="fragment_profile_lnrSelectedUser_bg">#FFC107</color>
+    <color name="item_list_user_txtName_color">#000000</color>
+    <color name="item_list_user_txtId_color">#000000</color>
+
+    <!-- ToDos Fragment -->
+    <color name="fragment_todos_lnrMain_bg">#FFFFFF</color>
+    <color name="item_list_todo_lnrMain_bg">#FFFFFF</color>
+    <color name="item_list_todo_txtTodo_color">#000000</color>
+    <color name="item_list_todo_txtStatus_color">#000000</color>
+
 </resources>

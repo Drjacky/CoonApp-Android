@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_weight="100"
-              android:background="@color/white"
-              android:minHeight="60dp"
-              android:orientation="horizontal"
-              android:paddingBottom="2dp"
-              android:paddingTop="2dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_list_todo_lnrMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="100"
+    android:background="@color/item_list_todo_lnrMain_bg"
+    android:minHeight="@dimen/item_list_todo_lnrMain_minHeight"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/item_list_todo_lnrMain_bottomTopPadding"
+    android:paddingTop="@dimen/item_list_todo_lnrMain_bottomTopPadding"
+    android:paddingEnd="@dimen/item_list_todo_lnrMain_paddingStartEnd"
+    android:paddingStart="@dimen/item_list_todo_lnrMain_paddingStartEnd">
 
     <TextView
-        android:id="@+id/tv_item_todo"
+        android:id="@+id/item_list_todo_txtTodo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="@dimen/item_list_todo_txtTodo_marginStart"
         android:layout_weight="75"
-        android:gravity="left"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        tools:text="My Task 0"/>
+        android:gravity="start"
+        android:textColor="@color/item_list_todo_txtTodo_color"
+        android:textSize="@dimen/item_list_todo_txtTodo_size"
+        tools:text="@string/item_list_todo_txtTodo" />
 
     <TextView
-        android:id="@+id/tv_item_status"
+        android:id="@+id/item_list_todo_txtStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="@dimen/item_list_todo_txtStatus_marginEnd"
         android:layout_weight="25"
-        android:gravity="right"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:gravity="end"
+        android:textColor="@color/item_list_todo_txtTodo_color"
+        android:textSize="@dimen/item_list_todo_txtTodo_size"
         android:textStyle="italic"
-        tools:text="done"/>
+        tools:text="@string/item_list_todo_txtStatus" />
 
 </LinearLayout>

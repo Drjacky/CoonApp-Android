@@ -2,56 +2,56 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_list_user_cnsMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="100"
     android:background="@color/white"
-    android:minHeight="60dp"
+    android:minHeight="@dimen/item_list_user_cnsMain_minHeight"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/user_txtName"
+        android:id="@+id/item_list_user_txtName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="@dimen/item_list_user_txtName_margin"
         android:gravity="center_horizontal|start"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:paddingStart="@dimen/item_list_user_txtName_paddingStartEnd"
+        android:paddingEnd="@dimen/item_list_user_txtName_paddingStartEnd"
+        android:textColor="@color/item_list_user_txtName_color"
+        android:textSize="@dimen/item_list_user_txtName_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.545"
+        app:layout_constraintVertical_bias="0.5"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        tools:text="My Task 0" />
+        tools:text="@string/item_list_user_txtName" />
 
     <TextView
-        android:id="@+id/user_txtId"
+        android:id="@+id/item_list_user_txtId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginBottom="@dimen/item_list_user_txtId_marginTopBottom"
+        android:layout_marginLeft="@dimen/item_list_user_txtId_marginLeftRight"
+        android:layout_marginRight="@dimen/item_list_user_txtId_marginLeftRight"
+        android:layout_marginTop="@dimen/item_list_user_txtId_marginTopBottom"
         android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textColor="@color/item_list_user_txtId_color"
+        android:textSize="@dimen/item_list_user_txtId_size"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/user_txtName"
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_user_txtName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/user_txtName"
+        app:layout_constraintTop_toTopOf="@+id/item_list_user_txtName"
         app:layout_constraintVertical_bias="0.6"
         tools:layout_constraintBaseline_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:text="done" />
+        tools:text="@string/item_list_user_txtId" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -60,5 +60,4 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
 
-</android.support.constraint.ConstraintLayout>
-<!-- LinearLayout converted to ConstraintLayout -->
+</android.support.constraint.ConstraintLayout><!-- LinearLayout converted to ConstraintLayout -->

@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">Challenge Accepted</string>
 
-    <!-- splash screen-->
-    <string name="splash_title">Challenge Accepted</string>
-
-    <!-- main screen-->
+    <!-- Main Activity-->
     <string name="main_bottom_navigation_profile">User Profile</string>
     <string name="main_bottom_navigation_photos">Photos</string>
     <string name="main_bottom_navigation_tasks">Task</string>
 
-    <!-- profile fragment -->
+    <!-- Profile Fragment -->
     <string name="fragment_profile_selected_user">Default selected User</string>
+    <string name="item_list_user_txtName">Default User</string>
+    <string name="item_list_user_txtId">1</string>
+
+    <!-- ToDos Fragment -->
+    <string name="item_list_todo_txtStatus">Done</string>
+    <string name="item_list_todo_txtTodo">Task Number 0</string>
 
 </resources>

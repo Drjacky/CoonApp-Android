@@ -52,10 +52,10 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     class UserItemViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.user_txtName)
+        @BindView(R.id.item_list_user_txtName)
         TextView txtName;
 
-        @BindView(R.id.user_txtId)
+        @BindView(R.id.item_list_user_txtId)
         TextView txtId;
 
         UserItemViewHolder(View view) {

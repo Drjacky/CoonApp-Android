@@ -23,7 +23,7 @@ public class UserTodoListView extends Fragment implements UserTodoListContract.V
     @Inject
     UserTodoListContract.Presenter presenter;
 
-    @BindView(R.id.ls_user_todos)
+    @BindView(R.id.fragment_todo_rcyUserTodos)
     RecyclerView lsUserToDos;
 
     private UserTodoListComponent scopeGraph;

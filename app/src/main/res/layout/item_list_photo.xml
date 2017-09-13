@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/item_list_photo_card_margin"
+        android:layout_margin="@dimen/item_list_photo_card_crdPhoto_margin"
         android:elevation="3dp"
-        card_view:cardCornerRadius="@dimen/item_list_photo_card_radius">
+        card_view:cardCornerRadius="@dimen/item_list_photo_card_crdPhoto_radius">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/item_list_photo_imgPhotoThumbnail"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_list_photo_height"
+                android:layout_height="@dimen/item_list_photo_imgPhotoThumbnail_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY" />
@@ -30,11 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_list_photo_imgPhotoThumbnail"
-                android:paddingLeft="@dimen/item_list_photo_title_padding"
-                android:paddingRight="@dimen/item_list_photo_title_padding"
-                android:paddingTop="@dimen/item_list_photo_title_padding"
-                android:textColor="@color/item_list_photo_card_row_title"
-                android:textSize="@dimen/item_list_photo_card_row_title" />
+                android:padding="@dimen/item_list_photo_txtPhotoId_padding"
+                android:textColor="@color/item_list_photo_txtPhotoId_color"
+                android:textSize="@dimen/item_list_photo_txtPhotoId_size" />
 
         </RelativeLayout>
 
