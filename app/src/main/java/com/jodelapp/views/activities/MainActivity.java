@@ -69,17 +69,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                 case R.id.bottom_navigation_main_activity_action_profile:
                     selectedFragment = UserProfileView.getInstance();
                     transaction.replace(R.id.v_container, selectedFragment, "fragment_profile");
-                    transaction.addToBackStack("fragment_profile");
+                    //transaction.addToBackStack("fragment_profile");
                     break;
                 case R.id.bottom_navigation_main_activity_action_photos:
                     selectedFragment = UserPhotoListView.getInstance();
                     transaction.replace(R.id.v_container, selectedFragment, "fragment_photos");
-                    transaction.addToBackStack("fragment_photos");
+                    //transaction.addToBackStack("fragment_photos");
                     break;
                 case R.id.bottom_navigation_main_activity_action_tasks:
                     selectedFragment = UserTodoListView.getInstance();
                     transaction.replace(R.id.v_container, selectedFragment, "fragment_tasks");
-                    transaction.addToBackStack("fragment_tasks");
+                    //transaction.addToBackStack("fragment_tasks");
                     break;
                 default:
                     selectedFragment = UserTodoListView.getInstance();

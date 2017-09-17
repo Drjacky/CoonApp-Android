@@ -1,0 +1,105 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:2:1-24:12
+	package
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:3:5-27
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:5:22-64
+application
+ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:7:5-22:19
+MERGED from [com.android.support:design:25.3.1] C:\Users\abbasi\.android\build-cache\d75ca5f04a55f264d53ec7043b22799f39dd7545\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\abbasi\.android\build-cache\66e30f8e2162f10e59fff6d9be11516635486a73\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\abbasi\.android\build-cache\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\abbasi\.android\build-cache\fbec5334b49759d3ba55bee31497fb37e40b161d\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\abbasi\.android\build-cache\53d7ffcc89518c4aab4b246032f7638ee9305a7e\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\abbasi\.android\build-cache\a27f771b6e9c3e4c7f9ce5c1ee5d486ec8e69fd9\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\abbasi\.android\build-cache\c7ee07b7cc2bf13ceb5457cc4147e0a8e71b0f42\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\abbasi\.android\build-cache\e02f2d4ad7c358207232f19674fe7d208251fd45\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\abbasi\.android\build-cache\9afead994e2ad35a988d6578cd47f17d17e58486\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\abbasi\.android\build-cache\6cc4029f6f9054d2e0ab308cb350920a19616327\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\abbasi\.android\build-cache\77164f71fcbc6a56ea89d04870510e4d8eb26c9c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\abbasi\.android\build-cache\9362c265154b88ae6ff832fadfbba054721d8094\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\abbasi\.android\build-cache\45bc3005da473d678ed6bc32e847c4aac2d00b36\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:11:9-41
+	android:supportsRtl
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:12:9-35
+	android:allowBackup
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:9:9-35
+	android:icon
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:10:9-34
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+	android:theme
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:13:9-40
+	android:name
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:8:9-28
+activity#com.jodelapp.views.activities.MainActivity
+ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:15:9-20:20
+	android:name
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:15:19-64
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:16:13-19:29
+action#android.intent.action.MAIN
+ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml:18:27-74
+uses-sdk
+INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:25.3.1] C:\Users\abbasi\.android\build-cache\d75ca5f04a55f264d53ec7043b22799f39dd7545\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:transition:25.3.1] C:\Users\abbasi\.android\build-cache\66e30f8e2162f10e59fff6d9be11516635486a73\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\abbasi\.android\build-cache\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\abbasi\.android\build-cache\fbec5334b49759d3ba55bee31497fb37e40b161d\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\abbasi\.android\build-cache\53d7ffcc89518c4aab4b246032f7638ee9305a7e\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\abbasi\.android\build-cache\a27f771b6e9c3e4c7f9ce5c1ee5d486ec8e69fd9\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\abbasi\.android\build-cache\c7ee07b7cc2bf13ceb5457cc4147e0a8e71b0f42\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\abbasi\.android\build-cache\e02f2d4ad7c358207232f19674fe7d208251fd45\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\abbasi\.android\build-cache\9afead994e2ad35a988d6578cd47f17d17e58486\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\abbasi\.android\build-cache\b22f9d7934fb8a3cbd2b1fb06e8d63457bff741d\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\abbasi\.android\build-cache\6cc4029f6f9054d2e0ab308cb350920a19616327\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\abbasi\.android\build-cache\77164f71fcbc6a56ea89d04870510e4d8eb26c9c\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\abbasi\.android\build-cache\9362c265154b88ae6ff832fadfbba054721d8094\output\AndroidManifest.xml:20:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\abbasi\.android\build-cache\a141bb8a9f777cab37c0de1d44b0ea1c3fa8a4b2\output\AndroidManifest.xml:19:5-43
+MERGED from [com.jakewharton:butterknife:8.2.1] C:\Users\abbasi\.android\build-cache\3ae9c32ab4d3a1328e431818afbef55baa8c247d\output\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\abbasi\.android\build-cache\45bc3005da473d678ed6bc32e847c4aac2d00b36\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] C:\Users\abbasi\.android\build-cache\d75ca5f04a55f264d53ec7043b22799f39dd7545\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+		INJECTED from D:\M\Death Note\CoonForked\CoonApp-Android-master\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\abbasi\.android\build-cache\d75ca5f04a55f264d53ec7043b22799f39dd7545\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\abbasi\.android\build-cache\66e30f8e2162f10e59fff6d9be11516635486a73\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\abbasi\.android\build-cache\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\abbasi\.android\build-cache\fbec5334b49759d3ba55bee31497fb37e40b161d\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\abbasi\.android\build-cache\53d7ffcc89518c4aab4b246032f7638ee9305a7e\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\abbasi\.android\build-cache\a27f771b6e9c3e4c7f9ce5c1ee5d486ec8e69fd9\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\abbasi\.android\build-cache\c7ee07b7cc2bf13ceb5457cc4147e0a8e71b0f42\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\abbasi\.android\build-cache\e02f2d4ad7c358207232f19674fe7d208251fd45\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\abbasi\.android\build-cache\9afead994e2ad35a988d6578cd47f17d17e58486\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\abbasi\.android\build-cache\b22f9d7934fb8a3cbd2b1fb06e8d63457bff741d\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\abbasi\.android\build-cache\6cc4029f6f9054d2e0ab308cb350920a19616327\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\abbasi\.android\build-cache\77164f71fcbc6a56ea89d04870510e4d8eb26c9c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\abbasi\.android\build-cache\9362c265154b88ae6ff832fadfbba054721d8094\output\AndroidManifest.xml:22:5-24:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] C:\Users\abbasi\.android\build-cache\d75ca5f04a55f264d53ec7043b22799f39dd7545\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] C:\Users\abbasi\.android\build-cache\d75ca5f04a55f264d53ec7043b22799f39dd7545\output\AndroidManifest.xml:26:9-47

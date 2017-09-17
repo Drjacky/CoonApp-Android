@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\M\\Death Note\\CoonForked\\CoonApp-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\abbasi\\.android\\build-cache\\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\\output\\res\\layout-v11\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\M\\Death Note\\CoonForked\\CoonApp-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\abbasi\\.android\\build-cache\\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\M\\Death Note\\CoonForked\\CoonApp-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\abbasi\\.android\\build-cache\\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\M\\Death Note\\CoonForked\\CoonApp-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\abbasi\\.android\\build-cache\\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "D:\\M\\Death Note\\CoonForked\\CoonApp-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\abbasi\\.android\\build-cache\\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "D:\\M\\Death Note\\CoonForked\\CoonApp-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\abbasi\\.android\\build-cache\\49c1f10c3498728893f21f6c4e69c9b48c8acf8f\\output\\res\\layout-v11\\notification_media_action.xml"
+    }
+]
