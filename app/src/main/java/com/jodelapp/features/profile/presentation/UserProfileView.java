@@ -11,21 +11,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.jodelapp.App;
-import com.jodelapp.AppComponent;
+import com.jodelapp.di.component.AppComponent;
 import com.jodelapp.R;
+import com.jodelapp.di.scope.ApplicationContext;
 import com.jodelapp.features.profile.models.UserProfilePresentationModel;
+import com.jodelapp.views.activities.base.BaseFragment;
+
 import java.util.List;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class UserProfileView extends Fragment implements UserProfileContract.View{ // I would have preferred this name 'ProfileFragment'; and put all these fragments in the 'views.fragments' package, not in the 'features' package.
+public class UserProfileView extends BaseFragment implements UserProfileContract.View{ // I would have preferred this name 'ProfileFragment'; and put all these fragments in the 'views.fragments' package, not in the 'features' package.
+
+    /*@Inject
+    UserProfileContract.Presenter presenter;*/
+    @Inject
+    UserProfileContract.Presenter<UserProfileContract.View> mPresenter;
 
     @Inject
-    UserProfileContract.Presenter presenter;
-
-    @Inject
+    @ApplicationContext
     Context mContext;
 
     @BindView(R.id.fragment_profile_rcyUsers)
@@ -40,8 +46,8 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
     @BindView(R.id.fragment_profile_txtSelectedUser_username)
     TextView txtSelectedUserUsername;
 
-    private UserProfileComponent scopeGraph;
-    private Unbinder unbinder;
+    //private UserProfileComponent scopeGraph;
+    //private Unbinder unbinder;
     private String mSelectedUserId;
 
     public static UserProfileView getInstance() {
@@ -53,8 +59,11 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        setupScopeGraph(App.get(getActivity()).getAppComponent());
-        unbinder = ButterKnife.bind(this, view);
+        //setupScopeGraph(App.get(getActivity()).getAppComponent());
+        getActivityComponent().inject(this);
+        //unbinder = ButterKnife.bind(this, view);
+        setUnBinder(ButterKnife.bind(this, view));
+        mPresenter.onAttach(this);
         initViews();
         return view;
     }
@@ -62,14 +71,16 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        presenter.onAttached(); // Get list of users from server.
+        mPresenter.getUsersList(); // Get list of users from server.
     }
 
     @Override
     public void onDestroyView() {
+        //super.onDestroyView();
+        //presenter.onDetached();
+        //unbinder.unbind();
+        mPresenter.onDetach();
         super.onDestroyView();
-        presenter.onDetached();
-        unbinder.unbind();
     }
 
     @Override
@@ -92,15 +103,30 @@ public class UserProfileView extends Fragment implements UserProfileContract.Vie
         rcyUsers.setHasFixedSize(true);
     }
 
-    private void setupScopeGraph(AppComponent appComponent) {
+/*    private void setupScopeGraph(AppComponent appComponent) {
         scopeGraph = DaggerUserProfileComponent.builder()
                 .appComponent(appComponent)
                 .userProfileModule(new UserProfileModule(this))
                 .build();
         scopeGraph.inject(this);
-    }
+    }*/
 
     public String getSelectedUserId(){ // Keep latest selected user id, for get related albums from server.
         return mSelectedUserId;
     }
+
+    @Override
+    protected void setUp(View view) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+/*    void onBackClick() {
+        getBaseActivity().onFragmentDetached(UserProfileView.class.getSimpleName());
+    }*/
+
 }

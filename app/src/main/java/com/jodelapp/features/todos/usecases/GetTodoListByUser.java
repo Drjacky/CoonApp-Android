@@ -11,21 +11,3 @@ public interface GetTodoListByUser {
 
     Single<List<TodoPresentationModel>> call(@NonNull String userId);
 }
-
-final class GetTodoListByUserImpl implements GetTodoListByUser {
-
-    private final ApiService apiService;
-
-    @Inject
-    public GetTodoListByUserImpl(ApiService apiService) {
-        this.apiService = apiService;
-    }
-
-    @Override
-    public Single<List<TodoPresentationModel>> call(@NonNull String userId) {
-        return apiService.getToDos(userId)
-                .flatMapIterable(todos -> todos)
-                .map(toDo -> new TodoPresentationModel(String.valueOf(toDo.getId()), toDo.getTitle(), toDo.getCompleted() ? "done" : "todo"))
-                .toList();
-    }
-}

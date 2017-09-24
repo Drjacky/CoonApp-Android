@@ -1,8 +1,11 @@
-package com.jodelapp;
+package com.jodelapp.di.module;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+
+import com.jodelapp.di.scope.ApplicationContext;
+
 import org.greenrobot.eventbus.EventBus;
 import java.util.Locale;
 import javax.inject.Singleton;
@@ -12,22 +15,30 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    Context appContext;
+    private final Application mApplication;
+    //Context appContext;
 
     public AppModule(Application application) {
-        appContext = application.getBaseContext();
+        //appContext = application.getBaseContext();
+        mApplication = application;
     }
 
     @Provides
-    @Singleton
-    Context provideApplication() {
-        return appContext;
+    //@Singleton
+    @ApplicationContext
+    Context provideContext() {
+        return mApplication;
+    }
+
+    @Provides
+    Application provideApplication() {
+        return mApplication;
     }
 
     @Provides
     @Singleton
     Resources provideAppResources() {
-        return appContext.getResources();
+        return mApplication.getResources();
     }
 
     @Provides

@@ -5,38 +5,43 @@ import com.jodelapp.features.profile.usecases.GetUserProfile;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
+import com.jodelapp.views.activities.base.BasePresenter;
 import javax.inject.Inject;
 
-public final class UserProfilePresenter implements UserProfileContract.Presenter {
+public final class UserProfilePresenter <V extends UserProfileContract.View> extends BasePresenter<V> implements UserProfileContract.Presenter<V> {
 
-    private final UserProfileContract.View view;
+    //private final UserProfileContract.View view;
     private final GetUserProfile getUserProfile;
     private final ThreadTransformer threadTransformer;
     private final RxDisposables disposables;
 
     @Inject
-    public UserProfilePresenter(UserProfileContract.View view,
+    public UserProfilePresenter(/*UserProfileContract.View view,*/
                                 GetUserProfile getUserProfile,
                                 ThreadTransformer threadTransformer,
-                                RxDisposableFactory factory) {
-        this.view = view;
+                                RxDisposableFactory rxDisposableFactory) {
+        super(threadTransformer, rxDisposableFactory);
+        //this.view = view;
         this.getUserProfile = getUserProfile;
-        this.threadTransformer = threadTransformer;
-        this.disposables = factory.get();
+        /*this.threadTransformer = threadTransformer;
+        this.disposables = rxDisposableFactory.get();*/
+        this.threadTransformer = getThreadTransformer();
+        this.disposables = getRxDisposables();
+
     }
 
     @Override
-    public void onAttached() { // Get list of users on UserProfileView fragment created.
+    public void getUsersList() { // Get list of users on UserProfileView fragment created.
         disposables.add(getUserProfile.call()
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        view::loadUserList,
+                        getMvpView()::loadUserList,
                         error -> Log.e("UserProfile", error.getMessage())
                 ));
     }
 
-    @Override
+/*    @Override
     public void onDetached() {
         disposables.clear();
-    }
+    }*/
 }

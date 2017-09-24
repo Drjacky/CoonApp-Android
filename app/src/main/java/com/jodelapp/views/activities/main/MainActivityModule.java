@@ -1,4 +1,4 @@
-package com.jodelapp.views.activities;
+package com.jodelapp.views.activities.main;
 
 
 import android.support.v4.app.FragmentManager;
@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+//@Module
 public class MainActivityModule {
 
-    private final MainActivityContract.View view;
+    /*private final MainActivityContract.View view;
 
     public MainActivityModule(MainActivityContract.View view) {
         this.view = view;
@@ -29,5 +29,5 @@ public class MainActivityModule {
     @Provides
     public FragmentManager provideFragmentManager() {
         return ((AppCompatActivity) view).getSupportFragmentManager();
-    }
+    }*/
 }

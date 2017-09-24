@@ -12,21 +12,4 @@ public interface GetUserProfile {
 
 }
 
-final class GetUserProfileImpl implements GetUserProfile {
 
-    private final ApiService apiService;
-
-    @Inject
-    public GetUserProfileImpl(ApiService apiService) {
-        this.apiService = apiService;
-    }
-
-
-    @Override
-    public Single<List<UserProfilePresentationModel>> call() { // Get list of users from server.
-        return apiService.getUsers()
-                .flatMapIterable(users -> users)
-                .map(user -> new UserProfilePresentationModel(String.valueOf(user.getId()), user.getName(), user.getUsername(), user.getEmail(), user.getAddress(), user.getPhone(), user.getWebsite(), user.getCompany()))
-                .toList();
-    }
-}

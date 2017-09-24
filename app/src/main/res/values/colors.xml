@@ -5,6 +5,7 @@
     <color name="colorAccent">#FFA000</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="black_effective">#2a2a2a</color>
 
     <!-- MainActivity -->
     <color name="bottom_navigation_main_activity_selector_state_checked">#ff0099cc</color>

@@ -4,10 +4,10 @@ package com.jodelapp.features.profile.usecases;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+//@Module
 public class UserProfileUseCaseModule {
-    @Provides
+/*    @Provides
     public GetUserProfile provideGetAllAvailableProviders(GetUserProfileImpl usecase) {
         return usecase;
-    }
+    }*/
 }

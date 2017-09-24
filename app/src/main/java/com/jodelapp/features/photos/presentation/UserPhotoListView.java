@@ -14,11 +14,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.jodelapp.App;
-import com.jodelapp.AppComponent;
+import com.jodelapp.di.component.AppComponent;
 import com.jodelapp.R;
+import com.jodelapp.di.scope.ApplicationContext;
 import com.jodelapp.features.photos.models.UserPhotoAlbumPresentationModel;
 import com.jodelapp.features.photos.models.UserPhotoPresentationModel;
 import com.jodelapp.features.profile.presentation.UserProfileView;
+import com.jodelapp.views.activities.base.BaseFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -26,14 +29,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class UserPhotoListView extends Fragment implements UserPhotoListContract.View {
+public class UserPhotoListView extends BaseFragment implements UserPhotoListContract.View {
 
     private static final String USER_ID = "1";
 
+    /*@Inject
+    UserPhotoListContract.Presenter presenter;*/
     @Inject
-    UserPhotoListContract.Presenter presenter;
+    UserPhotoListContract.Presenter<UserPhotoListContract.View> mPresenter;
 
     @Inject
+    @ApplicationContext
     Context mContext;
 
     @Inject
@@ -42,12 +48,12 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     @BindView(R.id.fragment_photos_rcyPhotos)
     RecyclerView mRecyclerViewPhotos;
 
+    //private UserPhotoListComponent scopeGraph;
+    //private Unbinder unbinder;
     private UserPhotoListAdapter mUserPhotoListRecyclerAdapter;
     private List<UserPhotoPresentationModel> photosList = new ArrayList<>();
     private List<UserPhotoAlbumPresentationModel> mAlbumList;
     private GridLayoutManager layoutManager;
-    private UserPhotoListComponent scopeGraph;
-    private Unbinder unbinder;
     private int firstVisibleItemPosition, visibleItemCount, totalItemCount;
     private boolean isLastPage = false;
     private boolean isLoading = false;
@@ -60,8 +66,11 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         View view = inflater.inflate(R.layout.fragment_photos, container, false);
-        setupScopeGraph(App.get(getActivity()).getAppComponent());
-        unbinder = ButterKnife.bind(this, view);
+        //setupScopeGraph(App.get(getActivity()).getAppComponent());
+        getActivityComponent().inject(this);
+        //unbinder = ButterKnife.bind(this, view);
+        setUnBinder(ButterKnife.bind(this, view));
+        mPresenter.onAttach(this);
         viewInit();
         return view;
     }
@@ -104,14 +113,16 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
                 .getSupportFragmentManager()
                 .findFragmentByTag("fragment_profile");
 
-        presenter.getAlbumList(userProfileViewFragment == null ? USER_ID : userProfileViewFragment.getSelectedUserId()); // Default userId, if user didn't click on the UserProfileView fragment.
+        mPresenter.getAlbumList(userProfileViewFragment == null ? USER_ID : userProfileViewFragment.getSelectedUserId()); // Default userId, if user didn't click on the UserProfileView fragment.
     }
 
     @Override
     public void onDestroyView() {
+        //super.onDestroyView();
+        //mPresenter.onDetached();
+        //unbinder.unbind();
+        mPresenter.onDetach();
         super.onDestroyView();
-        presenter.onDetached();
-        unbinder.unbind();
     }
 
     @Override
@@ -129,19 +140,29 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
 
         new Handler().postDelayed(() -> {
             if(nextPage < mAlbumList.size())
-                presenter.getNextPhotos(mAlbumList.get(nextPage).getId());
+                mPresenter.getNextPhotos(mAlbumList.get(nextPage).getId());
             else
                 isLastPage = true;
         }, 1000);
 
     }
 
-    private void setupScopeGraph(AppComponent appComponent) {
+/*    private void setupScopeGraph(AppComponent appComponent) {
         scopeGraph = DaggerUserPhotoListComponent.builder()
                 .appComponent(appComponent)
                 .userPhotoListModule(new UserPhotoListModule(this))
                 .build();
         scopeGraph.inject(this);
+    }*/
+
+    @Override
+    protected void setUp(View view) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private int ConvertDpToPx(int dp) {

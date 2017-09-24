@@ -5,39 +5,43 @@ import com.jodelapp.features.todos.usecases.GetTodoListByUser;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
+import com.jodelapp.views.activities.base.BasePresenter;
 import javax.inject.Inject;
 
-public final class UserTodoListPresenter implements UserTodoListContract.Presenter {
+public final class UserTodoListPresenter <V extends UserTodoListContract.View> extends BasePresenter<V> implements UserTodoListContract.Presenter<V> {
 
     private static final String USER_ID = "1";
-    private final UserTodoListContract.View view;
+    //private final UserTodoListContract.View view;
     private final GetTodoListByUser getTodoListByUser;
     private final ThreadTransformer threadTransformer;
     private final RxDisposables disposables;
 
     @Inject
-    public UserTodoListPresenter(UserTodoListContract.View view,
+    public UserTodoListPresenter(/*UserTodoListContract.View view,*/
                                  GetTodoListByUser getTodoListByUser,
                                  ThreadTransformer threadTransformer,
-                                 RxDisposableFactory factory) {
-        this.view = view;
+                                 RxDisposableFactory rxDisposableFactory) {
+        super(threadTransformer, rxDisposableFactory);
+        //this.view = view;
         this.getTodoListByUser = getTodoListByUser;
-        this.threadTransformer = threadTransformer;
-        this.disposables = factory.get();
+        /*this.threadTransformer = threadTransformer;
+        this.disposables = rxDisposableFactory.get();*/
+        this.threadTransformer = getThreadTransformer();
+        this.disposables = getRxDisposables();
     }
 
     @Override
-    public void onAttached() {
+    public void getTodosList() {
         disposables.add(getTodoListByUser.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        view::loadToDoList,
+                        getMvpView()::loadToDoList,
                         error -> Log.e("UserToDo", error.getMessage())
                 ));
     }
 
-    @Override
+/*    @Override
     public void onDetached() {
         disposables.clear();
-    }
+    }*/
 }

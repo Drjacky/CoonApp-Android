@@ -3,7 +3,7 @@ package com.jodelapp.features.photos.presentation;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+//@Module
 public class UserPhotoListModule {
 
     private final UserPhotoListContract.View view;
@@ -12,7 +12,7 @@ public class UserPhotoListModule {
         this.view = view;
     }
 
-    @Provides
+    /*@Provides
     public UserPhotoListContract.View provideView() {
         return this.view;
     }
@@ -20,5 +20,5 @@ public class UserPhotoListModule {
     @Provides
     public UserPhotoListContract.Presenter providePresenter(UserPhotoListPresenter presenter) {
         return presenter;
-    }
+    }*/
 }

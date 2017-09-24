@@ -1,65 +1,74 @@
-package com.jodelapp.views.activities;
+package com.jodelapp.views.activities.main;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+
 import com.jodelapp.App;
-import com.jodelapp.AppComponent;
+import com.jodelapp.di.component.AppComponent;
 import com.jodelapp.R;
 import com.jodelapp.features.photos.presentation.UserPhotoListView;
 import com.jodelapp.features.profile.presentation.UserProfileView;
 import com.jodelapp.features.todos.presentation.UserTodoListView;
+import com.jodelapp.views.activities.base.BaseActivity;
+
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
+public class MainActivity extends BaseActivity implements MainActivityContract.View {
 
+    /*@Inject
+    MainActivityContract.Presenter presenter;*/
     @Inject
-    MainActivityContract.Presenter presenter;
+    MainActivityContract.Presenter<MainActivityContract.View> mPresenter;
 
     @BindView(R.id.activity_main_btmNavigation)
     public BottomNavigationView btmNavigation;
 
-    private MainActivityComponent scopeGraph;
+    //private MainActivityComponent scopeGraph;
 
-    @Override
+/*    @Override
     public void loadToDoPage() {
         btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks); // To set bottomnavigation item to UserToDoListView fragment.
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.v_container, UserTodoListView.getInstance())
                 .commit();
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupScopeGraph(App.get(this).getAppComponent());
+        //setupScopeGraph(App.get(this).getAppComponent());
+        getActivityComponent().inject(this);
+        setUnBinder(ButterKnife.bind(this));
         initViews();
-        presenter.onCreate(); // The usage of this line replaced by below line.
+        mPresenter.onAttach(this);
+        //presenter.onCreate(); // The usage of this line replaced by below line.
         btmNavigation.setSelectedItemId(R.id.bottom_navigation_main_activity_action_tasks); // Instead of view.loadToDoPage(); in MainActivityPresenter.
     }
 
     @Override
     public void onDestroy() {
+        //super.onDestroy();
+        //presenter.onDestroy();
+        mPresenter.onDetach();
         super.onDestroy();
-        presenter.onDestroy();
     }
 
-    private void setupScopeGraph(AppComponent appComponent) {
+/*    private void setupScopeGraph(AppComponent appComponent) {
         scopeGraph = DaggerMainActivityComponent.builder()
                 .appComponent(appComponent)
                 .mainActivityModule(new MainActivityModule(this))
                 .build();
         scopeGraph.inject(this);
-    }
+    }*/
 
     private void initViews() {
-        ButterKnife.bind(this);
+        //ButterKnife.bind(this);
 
         //BottomNavigation
         btmNavigation.setOnNavigationItemSelectedListener(item -> {
@@ -89,5 +98,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             getSupportFragmentManager().executePendingTransactions();
             return true;
         });
+    }
+
+    @Override
+    protected void setUp() {
     }
 }

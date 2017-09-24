@@ -7,14 +7,17 @@ import com.jodelapp.utilities.StringUtils;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
+import com.jodelapp.views.activities.base.BasePresenter;
+import com.jodelapp.views.activities.base.BaseView;
+
 import java.util.List;
 import javax.inject.Inject;
 import io.reactivex.functions.Consumer;
 
-public final class UserPhotoListPresenter implements UserPhotoListContract.Presenter {
+public final class UserPhotoListPresenter <V extends UserPhotoListContract.View> extends BasePresenter<V> implements UserPhotoListContract.Presenter<V> {
 
     private static final String USER_ID = "1"; // Default userId, if user didn't click on the UserProfileView fragment.
-    private final UserPhotoListContract.View view;
+    //private final UserPhotoListContract.View view;
     private final GetUserPhoto getUserPhoto;
     private final ThreadTransformer threadTransformer;
     private final StringUtils stringUtils;
@@ -23,27 +26,30 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
     private List<UserPhotoPresentationModel> mPhotos;
 
     @Inject
-    public UserPhotoListPresenter(UserPhotoListContract.View view,
+    public UserPhotoListPresenter(/*UserPhotoListContract.View view,*/
                                   GetUserPhoto getUserPhoto,
                                   ThreadTransformer threadTransformer,
                                   StringUtils stringUtils,
-                                  RxDisposableFactory factory) {
-        this.view = view;
+                                  RxDisposableFactory rxDisposableFactory) {
+        super(threadTransformer, rxDisposableFactory);
+        //this.view = view;
         this.getUserPhoto = getUserPhoto;
-        this.threadTransformer = threadTransformer;
         this.stringUtils = stringUtils;
-        this.disposables = factory.get();
+/*        this.threadTransformer = threadTransformer;
+        this.disposables = rxDisposableFactory.get();*/
+        this.threadTransformer = getThreadTransformer();
+        this.disposables = getRxDisposables();
     }
 
-    @Override
+/*    @Override
     public void onAttached(String userId) {
         getAlbumList(stringUtils.valueOrDefault(userId, USER_ID));
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void onDetached() {
         disposables.clear();
-    }
+    }*/
 
     @Override
     public void getAlbumList(String userId){
@@ -63,7 +69,7 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
                         .compose(threadTransformer.applySchedulers())
                         .subscribe(userPhotoPresentationModels -> {
                             mPhotos = userPhotoPresentationModels;
-                            view.loadPhotoList(mPhotos, mAlbums); // Pass the mAlbums to the view, for pagination usage.
+                            getMvpView().loadPhotoList(mPhotos, mAlbums); // Pass the mAlbums to the view, for pagination usage.
                         }));
     }
 

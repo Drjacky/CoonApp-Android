@@ -4,10 +4,10 @@ package com.jodelapp.features.todos.presentation;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+//@Module
 public class UserTodoListModule {
 
-    private final UserTodoListContract.View view;
+/*    private final UserTodoListContract.View view;
 
     public UserTodoListModule(UserTodoListContract.View view) {
         this.view = view;
@@ -21,5 +21,6 @@ public class UserTodoListModule {
     @Provides
     public UserTodoListContract.Presenter providePresenter(UserTodoListPresenter presenter) {
         return presenter;
-    }
+    }*/
+
 }

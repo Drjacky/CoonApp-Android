@@ -15,28 +15,4 @@ public interface GetUserPhoto {
     Single<List<UserPhotoPresentationModel>> getPhotos(@NonNull String albumId); // Get list of photos from server by albumId.
 }
 
-final class GetUserPhotoImpl implements GetUserPhoto {
 
-    private final ApiService apiService;
-
-    @Inject
-    public GetUserPhotoImpl(ApiService apiService) {
-        this.apiService = apiService;
-    }
-
-    @Override
-    public Single<List<UserPhotoAlbumPresentationModel>> getAlbums(@NonNull String userId) {
-        return apiService.getAlbums(userId)
-                .flatMapIterable(albums -> albums)
-                .map(album ->  new UserPhotoAlbumPresentationModel(String.valueOf(album.getId()), album.getTitle(), String.valueOf(album.getUserId())))
-                .toList();
-    }
-
-    @Override
-    public Single<List<UserPhotoPresentationModel>> getPhotos(@NonNull String albumId) {
-        return apiService.getPhotos(albumId)
-                .flatMapIterable(photos -> photos)
-                .map(photo -> new UserPhotoPresentationModel(String.valueOf(photo.getAlbumId()), String.valueOf(photo.getId()), photo.getTitle(), photo.getUrl(), photo.getThumbnailUrl()))
-                .toList();
-    }
-}
