@@ -10,24 +10,18 @@ import javax.inject.Inject;
 
 public final class UserProfilePresenter <V extends UserProfileContract.View> extends BasePresenter<V> implements UserProfileContract.Presenter<V> {
 
-    //private final UserProfileContract.View view;
     private final GetUserProfile getUserProfile;
     private final ThreadTransformer threadTransformer;
     private final RxDisposables disposables;
 
     @Inject
-    public UserProfilePresenter(/*UserProfileContract.View view,*/
-                                GetUserProfile getUserProfile,
+    public UserProfilePresenter(GetUserProfile getUserProfile,
                                 ThreadTransformer threadTransformer,
                                 RxDisposableFactory rxDisposableFactory) {
         super(threadTransformer, rxDisposableFactory);
-        //this.view = view;
         this.getUserProfile = getUserProfile;
-        /*this.threadTransformer = threadTransformer;
-        this.disposables = rxDisposableFactory.get();*/
         this.threadTransformer = getThreadTransformer();
         this.disposables = getRxDisposables();
-
     }
 
     @Override
@@ -40,8 +34,4 @@ public final class UserProfilePresenter <V extends UserProfileContract.View> ext
                 ));
     }
 
-/*    @Override
-    public void onDetached() {
-        disposables.clear();
-    }*/
 }

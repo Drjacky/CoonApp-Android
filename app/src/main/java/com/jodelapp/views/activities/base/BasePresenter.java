@@ -3,7 +3,6 @@ package com.jodelapp.views.activities.base;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
-
 import javax.inject.Inject;
 
 public class BasePresenter<V extends BaseView> implements IBasePresenter<V> {

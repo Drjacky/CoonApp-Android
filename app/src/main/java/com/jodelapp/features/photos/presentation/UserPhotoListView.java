@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,28 +12,22 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.jodelapp.App;
-import com.jodelapp.di.component.AppComponent;
 import com.jodelapp.R;
 import com.jodelapp.di.scope.ApplicationContext;
 import com.jodelapp.features.photos.models.UserPhotoAlbumPresentationModel;
 import com.jodelapp.features.photos.models.UserPhotoPresentationModel;
 import com.jodelapp.features.profile.presentation.UserProfileView;
 import com.jodelapp.views.activities.base.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 public class UserPhotoListView extends BaseFragment implements UserPhotoListContract.View {
 
     private static final String USER_ID = "1";
 
-    /*@Inject
-    UserPhotoListContract.Presenter presenter;*/
     @Inject
     UserPhotoListContract.Presenter<UserPhotoListContract.View> mPresenter;
 
@@ -48,8 +41,6 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
     @BindView(R.id.fragment_photos_rcyPhotos)
     RecyclerView mRecyclerViewPhotos;
 
-    //private UserPhotoListComponent scopeGraph;
-    //private Unbinder unbinder;
     private UserPhotoListAdapter mUserPhotoListRecyclerAdapter;
     private List<UserPhotoPresentationModel> photosList = new ArrayList<>();
     private List<UserPhotoAlbumPresentationModel> mAlbumList;
@@ -66,9 +57,7 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         View view = inflater.inflate(R.layout.fragment_photos, container, false);
-        //setupScopeGraph(App.get(getActivity()).getAppComponent());
         getActivityComponent().inject(this);
-        //unbinder = ButterKnife.bind(this, view);
         setUnBinder(ButterKnife.bind(this, view));
         mPresenter.onAttach(this);
         viewInit();
@@ -118,9 +107,6 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
 
     @Override
     public void onDestroyView() {
-        //super.onDestroyView();
-        //mPresenter.onDetached();
-        //unbinder.unbind();
         mPresenter.onDetach();
         super.onDestroyView();
     }
@@ -146,14 +132,6 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
         }, 1000);
 
     }
-
-/*    private void setupScopeGraph(AppComponent appComponent) {
-        scopeGraph = DaggerUserPhotoListComponent.builder()
-                .appComponent(appComponent)
-                .userPhotoListModule(new UserPhotoListModule(this))
-                .build();
-        scopeGraph.inject(this);
-    }*/
 
     @Override
     protected void setUp(View view) {

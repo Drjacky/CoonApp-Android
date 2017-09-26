@@ -3,9 +3,7 @@ package com.jodelapp.di.module;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
-
 import com.jodelapp.di.scope.ApplicationContext;
-
 import org.greenrobot.eventbus.EventBus;
 import java.util.Locale;
 import javax.inject.Singleton;
@@ -16,10 +14,8 @@ import dagger.Provides;
 public class AppModule {
 
     private final Application mApplication;
-    //Context appContext;
 
     public AppModule(Application application) {
-        //appContext = application.getBaseContext();
         mApplication = application;
     }
 
@@ -47,10 +43,10 @@ public class AppModule {
         return Locale.getDefault();
     }
 
-    @Provides
+/*    @Provides //Unused
     @Singleton
     EventBus provideEventBus() {
         return EventBus.getDefault();
-    }
+    }*/
 
 }

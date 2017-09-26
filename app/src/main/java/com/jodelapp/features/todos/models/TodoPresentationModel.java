@@ -1,6 +1,5 @@
 package com.jodelapp.features.todos.models;
 
-
 public class TodoPresentationModel {
 
     private String id;

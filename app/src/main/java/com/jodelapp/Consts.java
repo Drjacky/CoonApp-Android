@@ -1,6 +1,5 @@
 package com.jodelapp;
 
-
 public class Consts {
 
     // The Base endpoint for Code Challenge

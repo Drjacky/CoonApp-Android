@@ -7,7 +7,6 @@ import java.util.List;
 import javax.inject.Inject;
 import io.reactivex.Single;
 
-
 public final class GetTodoListByUserImpl implements GetTodoListByUser {
 
     private final ApiService apiService;

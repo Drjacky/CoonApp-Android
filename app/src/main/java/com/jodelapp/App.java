@@ -2,7 +2,6 @@ package com.jodelapp;
 
 import android.app.Application;
 import android.content.Context;
-
 import com.jodelapp.di.component.AppComponent;
 import com.jodelapp.di.component.DaggerAppComponent;
 import com.jodelapp.di.module.AppModule;

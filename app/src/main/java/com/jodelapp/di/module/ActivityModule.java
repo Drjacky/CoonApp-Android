@@ -2,7 +2,6 @@ package com.jodelapp.di.module;
 
 import android.app.Activity;
 import android.content.Context;
-
 import com.jodelapp.di.scope.ActivityContext;
 import com.jodelapp.di.scope.ActivityScope;
 import com.jodelapp.features.photos.presentation.UserPhotoListContract;
@@ -21,7 +20,6 @@ import com.jodelapp.features.todos.usecases.GetTodoListByUserImpl;
 import com.jodelapp.utilities.rx.ThreadTransformer;
 import com.jodelapp.views.activities.main.MainActivityContract;
 import com.jodelapp.views.activities.main.MainActivityPresenter;
-
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
@@ -76,17 +74,17 @@ public class ActivityModule {
     }
 
     @Provides
-    public GetUserProfile provideGetAllAvailableProviders1(GetUserProfileImpl usecase) {
+    public GetUserProfile provideGetAllAvailableProvidersUserProfile(GetUserProfileImpl usecase) {
         return usecase;
     }
 
     @Provides
-    public GetTodoListByUser provideGetAllAvailableProviders2(GetTodoListByUserImpl usecase) {
+    public GetTodoListByUser provideGetAllAvailableProvidersTodoListByUser(GetTodoListByUserImpl usecase) {
         return usecase;
     }
 
     @Provides
-    public GetUserPhoto provideGetAllAvailableProviders3(GetUserPhotoImpl usecase) {
+    public GetUserPhoto provideGetAllAvailableProvidersUserPhoto(GetUserPhotoImpl usecase) {
         return usecase;
     }
 

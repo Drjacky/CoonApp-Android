@@ -11,21 +11,16 @@ import javax.inject.Inject;
 public final class UserTodoListPresenter <V extends UserTodoListContract.View> extends BasePresenter<V> implements UserTodoListContract.Presenter<V> {
 
     private static final String USER_ID = "1";
-    //private final UserTodoListContract.View view;
     private final GetTodoListByUser getTodoListByUser;
     private final ThreadTransformer threadTransformer;
     private final RxDisposables disposables;
 
     @Inject
-    public UserTodoListPresenter(/*UserTodoListContract.View view,*/
-                                 GetTodoListByUser getTodoListByUser,
+    public UserTodoListPresenter(GetTodoListByUser getTodoListByUser,
                                  ThreadTransformer threadTransformer,
                                  RxDisposableFactory rxDisposableFactory) {
         super(threadTransformer, rxDisposableFactory);
-        //this.view = view;
         this.getTodoListByUser = getTodoListByUser;
-        /*this.threadTransformer = threadTransformer;
-        this.disposables = rxDisposableFactory.get();*/
         this.threadTransformer = getThreadTransformer();
         this.disposables = getRxDisposables();
     }
@@ -40,8 +35,4 @@ public final class UserTodoListPresenter <V extends UserTodoListContract.View> e
                 ));
     }
 
-/*    @Override
-    public void onDetached() {
-        disposables.clear();
-    }*/
 }

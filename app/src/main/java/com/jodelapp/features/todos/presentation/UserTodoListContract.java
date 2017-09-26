@@ -3,7 +3,6 @@ package com.jodelapp.features.todos.presentation;
 import com.jodelapp.features.todos.models.TodoPresentationModel;
 import com.jodelapp.views.activities.base.BaseView;
 import com.jodelapp.views.activities.base.IBasePresenter;
-
 import java.util.List;
 
 public interface UserTodoListContract {
@@ -18,6 +17,5 @@ public interface UserTodoListContract {
 
         void getTodosList();
 
-        //void onDetached();
     }
 }

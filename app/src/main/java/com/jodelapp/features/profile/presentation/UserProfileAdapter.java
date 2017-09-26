@@ -49,7 +49,6 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return userDataList.size();
     }
 
-
     class UserItemViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.item_list_user_txtName)

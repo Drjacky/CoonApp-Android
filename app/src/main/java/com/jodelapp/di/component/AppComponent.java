@@ -28,7 +28,7 @@ public interface AppComponent extends UtilsComponent, DataComponent {
 
     Locale exposeLocale();
 
-    EventBus exposeBus();
+    //EventBus exposeBus(); //Unused
 
     Application exposeApplication();
 
