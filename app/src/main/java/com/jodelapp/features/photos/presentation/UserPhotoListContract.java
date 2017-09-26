@@ -15,9 +15,6 @@ public interface UserPhotoListContract {
     }
 
     interface Presenter <V extends UserPhotoListContract.View> extends IBasePresenter<V> {
-        //void onAttached(String userId); // Replaced by getAlbumList in OnResume class, in UserPhotoListView.
-
-        //void onDetached();
 
         void getAlbumList(String userId); // Get list of albums by userId.
 

@@ -1,12 +1,19 @@
 package com.jodelapp.features.todos.presentation;
 
 import android.util.Log;
+
+import com.jodelapp.features.todos.models.TodoPresentationModel;
 import com.jodelapp.features.todos.usecases.GetTodoListByUser;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
 import com.jodelapp.views.activities.base.BasePresenter;
+
+import java.util.List;
+
 import javax.inject.Inject;
+
+import io.reactivex.functions.Consumer;
 
 public final class UserTodoListPresenter <V extends UserTodoListContract.View> extends BasePresenter<V> implements UserTodoListContract.Presenter<V> {
 
@@ -27,12 +34,16 @@ public final class UserTodoListPresenter <V extends UserTodoListContract.View> e
 
     @Override
     public void getTodosList() {
+        getMvpView().showLoading();
         disposables.add(getTodoListByUser.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
-                .subscribe(
-                        getMvpView()::loadToDoList,
-                        error -> Log.e("UserToDo", error.getMessage())
-                ));
+                .subscribe(todoPresentationModels -> {
+                    getMvpView().hideLoading();
+                    getMvpView().loadToDoList(todoPresentationModels);
+                }, throwable -> {
+                    getMvpView().hideLoading();
+                    Log.e("UserToDo", throwable.getMessage());
+                }));
     }
 
 }
